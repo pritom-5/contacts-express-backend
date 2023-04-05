@@ -4,6 +4,10 @@ const jwt = require("jsonwebtoken");
 const validateToken = asyncHandler(async (req, res, next) => {
   let token;
   let authHeader = req.headers.Authorization || req.headers.authorization;
+  if (!authHeader) {
+    res.status(401);
+    throw new Error("something went wrong");
+  }
   if (!!authHeader) {
     token = authHeader.split(" ")[1];
     if (!token) {

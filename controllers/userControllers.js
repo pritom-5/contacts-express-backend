@@ -8,6 +8,8 @@ const userModel = require("../models/userModels");
 //@access public
 // username, email, password
 const registerUser = asyncHandler(async (req, res) => {
+  ///////////
+  console.log(req.body);
   const { username, email, password } = req.body;
 
   // check if any field was empty submitted
